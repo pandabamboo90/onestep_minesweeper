@@ -5,3 +5,20 @@ abbr[title] {
   color: $red;
   text-decoration: none;
 }
+
+table.grid {
+  border-color: #b7b7b7;
+  font-size: 16px;
+
+  td {
+    width: 21px;
+    height: 21px;
+    padding: 1px;
+    vertical-align: middle;
+    text-align: center;
+
+    &.mine {
+      font-size: 12px
+    }
+  }
+}

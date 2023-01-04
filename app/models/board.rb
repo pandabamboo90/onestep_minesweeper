@@ -20,7 +20,7 @@ class Board < ApplicationRecord
   before_create :generate_grid
 
   def generate_grid
-    self.grid = Array.new(width) { Array.new(height, "") }
+    self.grid = Array.new(height) { Array.new(width, "") }
     generated_pos_arr = []
     num_of_mines.times do |idx|
       generate_unique_mine_position(generated_array: generated_pos_arr, grid: self.grid)
@@ -30,8 +30,8 @@ class Board < ApplicationRecord
   end
 
   def generate_unique_mine_position(generated_array:, grid:)
-    x = rand(width)
-    y = rand(height)
+    x = rand(height)
+    y = rand(width)
     pos = "#{x}:#{y}"
 
     # Using binary search here for best performance result

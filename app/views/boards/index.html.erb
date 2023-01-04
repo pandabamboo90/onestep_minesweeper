@@ -2,7 +2,7 @@
 
 <div class="card">
   <div class="card-header">
-    <h2>Boards list<%= link_to "New board", new_board_path, class: "btn btn-link" %></h2>
+    <h2>Boards list<%= link_to "Generate Board", new_board_path, class: "btn btn-link" %></h2>
   </div>
   <div class="card-body">
     <table class="table">
@@ -33,7 +33,7 @@
     </table>
 
     <%= render 'pagy/bootstrap_nav', pagy: @pagy %>
-    <%= link_to "New board", new_board_path, class: "btn btn-link" %>
+    <%= link_to "Generate Board", new_board_path, class: "btn btn-link" %>
 
   </div>
 </div>
