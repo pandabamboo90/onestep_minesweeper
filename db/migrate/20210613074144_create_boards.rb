@@ -13,6 +13,6 @@ class CreateBoards < ActiveRecord::Migration[7.0]
       t.datetime :deleted_at
     end
 
-    add_index(:boards, %i[name, user_id], name: 'unique_idx_on_name_and_user_id', unique: true)
+    add_index(:boards, %i[name user_id], name: 'unique_idx_on_name_and_user_id', unique: true)
   end
 end

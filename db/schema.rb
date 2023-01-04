@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2021_06_13_074144) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
-    t.index "\"name,\", \"user_id\"", name: "unique_idx_on_name_and_user_id", unique: true
+    t.index ["name", "user_id"], name: "unique_idx_on_name_and_user_id", unique: true
     t.index ["name"], name: "index_boards_on_name"
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
