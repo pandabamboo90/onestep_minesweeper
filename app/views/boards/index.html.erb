@@ -2,12 +2,13 @@
 
 <div class="card">
   <div class="card-header">
-    <h2>Boards list</h2>
+    <h2>Boards list<%= link_to "New board", new_board_path, class: "btn btn-link" %></h2>
   </div>
   <div class="card-body">
     <table class="table">
       <thead class="table-dark">
       <tr>
+        <th>#</th>
         <th>Creator</th>
         <th>Name</th>
         <th>Size</th>
@@ -19,6 +20,7 @@
       <tbody>
       <% @boards.each do |board| %>
         <tr>
+          <td><%= board.id %></td>
           <td><%= board.user.email %></td>
           <td><%= board.name %></td>
           <td><%= "#{board.width}x#{board.height}" %></td>
@@ -30,8 +32,8 @@
       </tbody>
     </table>
 
-    <%== pagy_bootstrap_nav(@pagy, link_extra: 'class="my-class"') %>
-
+    <%= render 'pagy/bootstrap_nav', pagy: @pagy %>
     <%= link_to "New board", new_board_path, class: "btn btn-link" %>
+
   </div>
 </div>
