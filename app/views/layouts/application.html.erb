@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OnestepMinesweeper</title>
+    <title>One Step - Minesweeper</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container">
+        <span class="navbar-brand mb-0 h1">Minesweeper board generator</span>
+      </div>
+    </nav>
+
+    <div class="container pt-5">
+      <%= yield %>
+    </div>
   </body>
 </html>

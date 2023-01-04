@@ -1,14 +1,37 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Boards</h1>
+<div class="card">
+  <div class="card-header">
+    <h2>Boards list</h2>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead class="table-dark">
+      <tr>
+        <th>Creator</th>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Num of mines</th>
+        <th>Created At</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @boards.each do |board| %>
+        <tr>
+          <td><%= board.user.email %></td>
+          <td><%= board.name %></td>
+          <td><%= "#{board.width}x#{board.height}" %></td>
+          <td><%= board.num_of_mines %></td>
+          <td><%= board.created_at %></td>
+          <td><%= link_to "View", board %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<div id="boards">
-  <% @boards.each do |board| %>
-    <%= render board %>
-    <p>
-      <%= link_to "Show this board", board %>
-    </p>
-  <% end %>
+    <%== pagy_bootstrap_nav(@pagy, link_extra: 'class="my-class"') %>
+
+    <%= link_to "New board", new_board_path, class: "btn btn-link" %>
+  </div>
 </div>
-
-<%= link_to "New board", new_board_path %>

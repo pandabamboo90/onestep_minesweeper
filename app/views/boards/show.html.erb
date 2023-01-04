@@ -1,10 +1,49 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @board %>
+<div class="card">
+  <div class="card-header">
+    <h3>Board #<%= @board.id %></h3>
+  </div>
 
-<div>
-  <%= link_to "New board", new_board_path %>
-  <%= link_to "Back to boards", boards_path %>
+  <div class="card-body" id="<%= dom_id @board %>">
+    <table class="table table-bordered">
+      <tr>
+        <th>Creator:</th>
+        <td><%= @board.user.email %></td>
+      </tr>
 
-  <%= button_to "Destroy this board", @board, method: :delete %>
+      <tr>
+        <th>Name:</th>
+        <td><%= @board.name %></td>
+      </tr>
+
+      <tr>
+        <th>Size:</th>
+        <td><%= "#{@board.width}x#{@board.height}" %></td>
+      </tr>
+
+      <tr>
+        <th>Num of mines:</th>
+        <td><%= @board.num_of_mines %></td>
+      </tr>
+
+      <tr>
+        <th>Grid</th>
+        <td>
+          <table class="table-bordered" style="border-color: #b7b7b7; font-size: 14px">
+            <% JSON.parse(@board.grid).each do |row| %>
+              <tr>
+                <% row.each do |col| %>
+                  <td><%= col.present? ? '&#128163;'.html_safe : '' %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <%= link_to "Boards list", boards_path, class: "btn btn-link" %>
+    <%= link_to "New board", new_board_path, class: "btn btn-link" %>
+  </div>
 </div>

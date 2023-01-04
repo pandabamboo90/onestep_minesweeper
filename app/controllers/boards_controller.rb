@@ -3,12 +3,11 @@ class BoardsController < ApplicationController
 
   # GET /boards or /boards.json
   def index
-    @boards = Board.all
+    @pagy, @boards = pagy(Board.includes(:user).order(id: :desc))
   end
 
   # GET /boards/1 or /boards/1.json
   def show
-    p '123'
   end
 
   # GET /boards/new

@@ -1,4 +1,16 @@
-<%= simple_form_for(board) do |f| %>
+<%= simple_form_for(board,
+                    wrapper: :horizontal_form,
+                    wrapper_mappings: {
+                      boolean:       :horizontal_boolean,
+                      check_boxes:   :horizontal_collection,
+                      date:          :horizontal_multi_select,
+                      datetime:      :horizontal_multi_select,
+                      file:          :horizontal_file,
+                      radio_buttons: :horizontal_collection,
+                      range:         :horizontal_range,
+                      time:          :horizontal_multi_select,
+                      select:        :horizontal_select
+                    }) do |f| %>
   <%= f.simple_fields_for(user) do |user_f| %>
     <%= user_f.input :email %>
   <% end %>
@@ -7,5 +19,12 @@
   <%= f.input :width %>
   <%= f.input :height %>
   <%= f.input :num_of_mines %>
-  <%= f.button :submit %>
+
+  <div class="row mb-0">
+    <div class="col-sm-9 offset-sm-3">
+      <%= f.button :submit, class: "btn-primary" %>
+      <%= f.button :button, "Reset", type: "reset", class: "btn-outline-secondary" %>
+      <%= link_to "Boards list", boards_path, class: "btn btn-link" %>
+    </div>
+  </div>
 <% end %>
