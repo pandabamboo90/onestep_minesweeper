@@ -1,0 +1,11 @@
+<%= simple_form_for(board) do |f| %>
+  <%= f.simple_fields_for(user) do |user_f| %>
+    <%= user_f.input :email %>
+  <% end %>
+
+  <%= f.input :name %>
+  <%= f.input :width %>
+  <%= f.input :height %>
+  <%= f.input :num_of_mines %>
+  <%= f.button :submit %>
+<% end %>
